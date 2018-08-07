@@ -1,0 +1,22 @@
+{
+  "name": "guidejs",
+  "version": "1.0.0",
+  "description": "guide for system oprations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bennnis/guidejs.git"
+  },
+  "keywords": [
+    "tool"
+  ],
+  "author": "bennnis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bennnis/guidejs/issues"
+  },
+  "homepage": "https://github.com/Bennnis/guidejs#readme"
+}
