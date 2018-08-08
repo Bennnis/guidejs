@@ -4,6 +4,7 @@
   "description": "guide for system oprations",
   "main": "index.js",
   "scripts": {
+    "dev": "rollup -c ./rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,27 @@
   "bugs": {
     "url": "https://github.com/Bennnis/guidejs/issues"
   },
-  "homepage": "https://github.com/Bennnis/guidejs#readme"
+  "homepage": "https://github.com/Bennnis/guidejs#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.1.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "eslint": "^5.3.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "node-sass": "^4.9.3",
+    "postcss": "^7.0.2",
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-sass": "^0.9.2"
+  },
+  "dependencies": {}
 }
