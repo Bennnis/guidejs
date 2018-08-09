@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../dist/style.css">
+    <script src="../../dist/bundle.js"></script>
+</head>
+<body>
+<button id="btn1">hello guide 1</button>
+<button id="btn2">hello guide 2</button>
+<button id="btn3">hello guide 3</button>
+<script>
+    let guide = new Guide([
+    	new GuideChain(document.getElementById('btn1')),
+    	new GuideChain(document.getElementById('btn2')),
+    	new GuideChain(document.getElementById('btn3'))
+    ])
+
+    guide.display()
+
+</script>
+</body>
+</html>

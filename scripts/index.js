@@ -1,6 +1,8 @@
-import '../styles/index.scss'
-import Guide from './core/guide'
+// import '../styles/index.scss'
+import Guide from './core/Guide'
+import GuideChain from './core/GuideChain'
 
 (function (g) {
-  g.guide = Guide
+  g.Guide = Guide
+  g.GuideChain = GuideChain
 })(window)
