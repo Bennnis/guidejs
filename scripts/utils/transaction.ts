@@ -1,11 +1,13 @@
-const transact = (transactions: Array<Function>) => {
-    transactions.forEach(function (transaction) {
-        transaction()
+import Transaction from "../core/Transaction";
+
+export const transact = (transactions: Array<Transaction>) => {
+    transactions.forEach((transaction: Transaction) => {
+        transaction.action()
     })
 }
 
-const act = (method: Function, args: Array<any> = []) => {
-    return () => {
-        method(...args)
-    }
+export const resetTransact = (transactions: Array<Transaction>) => {
+    transactions.forEach((transaction: Transaction) => {
+        transaction.reset()
+    })
 }
