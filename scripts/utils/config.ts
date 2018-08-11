@@ -5,18 +5,25 @@ export const ROOT_CLASS = 'guide'
 const ELEMENT_SPEARTOR = '__'
 const MODIFIER_SPEARTOR = '--'
 
-const MASK_TAG = ROOT_TAG
-export const MASK_POS_LEFT = 'left'
-export const MASK_POS_RIGHT = 'right'
-export const MASK_POS_TOP = 'top'
-export const MASK_POS_BOTTOM = 'bottom'
-export const MASK_CLASS = 'mask'
+//base
+const DEFAULT_OFFSET = 3
 
+//translate utils
+export const TRANSLATE_X_ALL = 'translateX(100%)'
+export const TRANSLATE_X_ALL_REVERSE = 'translateX(-100%)'
+export const TRANSLATE_Y_ALL = 'translateY(100%)'
+export const TRANSLATE_Y_ALL_REVERSE = 'translateY(-100%)'
+
+//mask
+export const MASK_CLASS = 'mask'
+export const MASK_DEFAULT_OFFSET = DEFAULT_OFFSET
 export const MASK_CLASS_BEM = `${ROOT_CLASS}${ELEMENT_SPEARTOR}${MASK_CLASS}`
 
-/**
- * styles default config
- * */
+//tips
+export const TIPS_CLASS = 'tips'
+export const TIPS_DEFAULT_OFFSET = 2 * MASK_DEFAULT_OFFSET
+export const TIPS_CLASS_BEM = `${ROOT_CLASS}${ELEMENT_SPEARTOR}${TIPS_CLASS}`
+
 export const DISPLAY_EL_ZINDEX = 2001
 export const DISPLAY_EL_POSITION = 'fixed'
 
