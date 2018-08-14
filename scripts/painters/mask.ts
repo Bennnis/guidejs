@@ -1,6 +1,6 @@
-import {appendDom, createDom, replaceFromTo, setClasses, setCsses} from "./domUtils";
-import {MASK_CLASS_BEM, ROOT_TAG} from "./config";
-import {transToPX} from "./helpers";
+import {appendDom, createDom, setClasses, setCsses} from "../utils/domUtils";
+import {MASK_CLASS_BEM, MASK_DEFAULT_OFFSET, ROOT_TAG, TIPS_CLASS_BEM, TRANSLATE_X_ALL_REVERSE} from "../utils/config";
+import {transToPX} from "../utils/helpers";
 
 /**
  * paint utils has two compare method "normal" and "resetNormal"
@@ -29,7 +29,7 @@ const initMask = () => {
     return mask
 }
 
-export const createMask = (el: any, config: any) => {
+const createMask = (el: any, config: any) => {
     !maskInitialized && initMask()
 
     for (let pos in mask) {
@@ -44,29 +44,29 @@ export const createMask = (el: any, config: any) => {
 let maskSetters: any = {
     left: (mask: any, el: any, pos: any) => {
         setCsses(mask, {
-            height: transToPX(el.offsetHeight),
-            left: transToPX(pos.left),
-            top: transToPX(pos.top),
-            transform: 'translateX(-100%)'
+            height: transToPX(el.offsetHeight + 2 * MASK_DEFAULT_OFFSET),
+            left: transToPX(pos.left - MASK_DEFAULT_OFFSET),
+            top: transToPX(pos.top - MASK_DEFAULT_OFFSET),
+            transform: TRANSLATE_X_ALL_REVERSE
         })
     },
     top: (mask: any, el: any, pos: any) => {
         setCsses(mask, {
-            height: transToPX(pos.top),
+            height: transToPX(pos.top - MASK_DEFAULT_OFFSET),
             left: 0,
             top: 0
         })
     },
     right: (mask: any, el: any, pos: any) => {
         setCsses(mask, {
-            height: transToPX(el.offsetHeight),
-            left: transToPX(pos.right),
-            top: transToPX(pos.top)
+            height: transToPX(el.offsetHeight + 2 * MASK_DEFAULT_OFFSET),
+            left: transToPX(pos.right + MASK_DEFAULT_OFFSET),
+            top: transToPX(pos.top - MASK_DEFAULT_OFFSET)
         })
     },
     bottom: (mask: any, el: any, pos: any) => {
         setCsses(mask, {
-            top: transToPX(pos.bottom)
+            top: transToPX(pos.bottom + MASK_DEFAULT_OFFSET)
         })
     }
 }
@@ -75,7 +75,7 @@ const setMaskPosition = (pos: string, mask: any, el: any) => {
     maskSetters[pos](mask, el, el.getBoundingClientRect())
 }
 
-export const resetCreateMask = (mask: any) => {
+const resetCreateMask = (mask: any) => {
     return () => {
         for (let pos in mask) {
             mask[pos].remove()
@@ -83,15 +83,4 @@ export const resetCreateMask = (mask: any) => {
     }
 }
 
-/**
- * ------------------------tips------------------------------
- * */
-export const createTips = (el: any) => {
-
-}
-
-/**
- * -----------------------pointer-----------------------------
- * */
-export const createPointer = (el: any) => {
-}
+export default createMask

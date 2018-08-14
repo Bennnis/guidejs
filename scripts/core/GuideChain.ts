@@ -1,10 +1,12 @@
 import Chain from "./Chain";
-import {addEvent, removeEvent} from '../utils/eventUtils'
-import {createMask, createPointer, createTips} from "../utils/paintUtils";
+import {addEvent} from '../utils/eventUtils'
 import {resetTransact, transact} from "../utils/transaction";
 import Transaction from "./Transaction";
 import {DEFAULT_PASS_EVENT} from "../utils/config";
 import PaintTransaction from "./PaintTransaction";
+import createMask from '../painters/mask'
+import createPointer from '../painters/pointer'
+import createTips from '../painters/tips'
 
 export default class GuideChain extends Chain {
     public el: HTMLElement
@@ -13,6 +15,7 @@ export default class GuideChain extends Chain {
 
     //default config for per chain
     private _defaults: object = {
+        tipsPosition: 'bottom'
     }
 
     constructor(el: HTMLElement, config?: object) {
@@ -31,13 +34,7 @@ export default class GuideChain extends Chain {
     }
 
     public paintGuide(resolve: Function) {
-        let args = [this.el, this.config]
-
-        this.paintTransactions = [
-            new PaintTransaction(createMask, args),
-            new PaintTransaction(createTips, args),
-            new PaintTransaction(createPointer, args)
-        ]
+        this.setTransactions()
 
         transact(this.paintTransactions)
 
@@ -45,5 +42,14 @@ export default class GuideChain extends Chain {
             resetTransact(this.paintTransactions)
             resolve()
         })
+    }
+
+    public setTransactions () {
+        let args = [this.el, this.config]
+
+        this.paintTransactions = [
+            new PaintTransaction(createMask, args),
+            new PaintTransaction(createTips, args)
+        ]
     }
 }
